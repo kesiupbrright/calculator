@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator app</title>
+
+    <style>
+
+        body{
+            display: flex;
+            justify-content: center;
+            height: 90vh;
+            align-content: center;
+        }
+
+        table{
+            background-color: rgb(14, 22, 94);
+            color: white;
+            height: 13rem;
+            padding: .3em;
+            border-radius: .3em;
+            box-shadow: 1px 2px 1px 3px rgb(119, 33, 33);
+        }
+
+        input{
+            width: 95%;
+            font-size: 20px;
+            padding: 3px;
+        }
+
+        button{
+            width: 4em;
+        }
+    </style>
+
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4"><input type="text" id="inputField" value="0"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="text" id="Ans" value="Ans:"></th>
+            </tr>
+        </thead>
+        <tbody>
+             <tr>
+                <td><button>(</button></td>
+                <td><button>)</button></td>
+                <td><button onclick="delNum()">Del</button></td>
+                <td><button onclick="clearAll()">AC</button></td>
+             </tr>
+             <tr>
+                <td><button id="seven" onclick="addSeven()">7</button></td>
+                <td><button id="eight" onclick="addEight()">8</button></td>
+                <td><button id="nine" onclick="addNine()">9</button></td>
+                <td><button onclick="devision()">/</button></td>
+             </tr>
+             <tr>
+                <td><button id="four" onclick="addFour()">4</button></td>
+                <td><button id="five" onclick="addFive()">5</button></td>
+                <td><button id="six" onclick="addSix()">6</button></td>
+                <td><button onclick="multiplication()">X</button></td>
+             </tr>
+             <tr>
+                <td><button id="one" onclick="addOne()">1</button></td>
+                <td><button id="two" onclick="addTwo()">2</button></td>
+                <td><button id="three" onclick="addThree()">3</button></td>
+                <td><button onclick="subtraction()">-</button></td>
+             </tr>
+             <tr>
+                <td><button id="zero" onclick="addZero()">0</button></td>
+                <td><button id="dot" onclick="dot()">.</button></td>
+                <td><button onclick="doMath()">=</button></td>
+                <td><button onclick="addition()">+</button></td>
+             </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // getting exact digit 
+        const inputField = document.getElementById("inputField");
+        const answerField = document.getElementById("Ans");
+        
+        function addOne()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 1;
+            }
+            else
+            {
+                inputField.value = innitialValue + 1;
+            }
+        }
+
+        function addTwo()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 2;
+            }
+            else
+            {
+                inputField.value = innitialValue + 2;
+            }
+        }
+
+        function addThree()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 3;
+            }
+            else
+            {
+                inputField.value = innitialValue + 3;
+            }
+        }
+
+        function addFour()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 4;
+            }
+            else
+            {
+                inputField.value = innitialValue + 4;
+            }
+        }
+
+        function addFive()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 5;
+            }
+            else
+            {
+                inputField.value = innitialValue + 5;
+            }
+        }
+
+        function addSix()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 6;
+            }
+            else
+            {
+                inputField.value = innitialValue + 6;
+            }
+        }
+
+        function addSeven()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 7;
+            }
+            else
+            {
+                inputField.value = innitialValue + 7;
+            }
+        }
+
+        function addEight()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 8;
+            }
+            else
+            {
+                inputField.value = innitialValue + 8;
+            }
+        }
+
+        function addNine()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 9;
+            }
+            else
+            {
+                inputField.value = innitialValue + 9;
+            }
+        }
+
+        function addZero()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+            }
+            else
+            {
+                inputField.value = innitialValue + 0;
+            }
+        }
+
+        function dot()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+            }
+            else
+            {
+                inputField.value = innitialValue + '.';
+            }
+        }
+
+        // code to empty the text box
+        function clearAll()
+        {
+            inputField.value = 0;
+            answerField.value = 'Ans: '
+        }
+
+        // code to delete the last number
+        function delNum()
+        {
+            var numToString = inputField.value.toString();
+            var trimedNum = numToString.slice(0, -1);
+            var numToInt = parseInt(trimedNum);
+            if(isNaN(numToInt))
+            {
+                inputField.value = 0;
+            }
+            else
+            {
+                inputField.value = trimedNum;
+            }
+        }
+
+        // addition operator
+
+        function addition()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 0;
+            }
+            else
+            {
+                inputField.value = innitialValue + '+';
+            }
+        }
+
+        // multiplication operator
+
+        function multiplication()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 0;
+            }
+            else
+            {
+                inputField.value = innitialValue + 'X';
+            }
+        }
+
+        // devision operator
+
+        function devision()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 0;
+            }
+            else
+            {
+                inputField.value = innitialValue + '/';
+            }
+        }
+
+        // subtraction operator
+
+        function subtraction()
+        {
+            var innitialValue = inputField.value;
+            if(innitialValue == 0)
+            {
+                inputField.value = 0;
+            }
+            else
+            {
+                inputField.value = innitialValue + '-';
+            }
+        }
+
+        // do the math calculation
+
+        function doMath()
+        {
+            var nums = inputField.value;
+            var splitNumAdd = nums.split('+');
+            if(splitNumAdd.length > 1)
+            {
+                add(splitNumAdd);
+            }
+
+            var splitNumMul = nums.split('X');
+            if(splitNumMul.length > 1)
+            {
+                mul(splitNumMul);
+            }
+
+            var splitNumSub = nums.split('-');
+            if(splitNumSub.length > 1)
+            {
+                sub(splitNumSub);
+            }
+
+            var splitNumDev = nums.split("/");
+            if(splitNumDev.length > 1)
+            {
+                dev(splitNumDev);
+            }
+
+        }
+
+        function add(splitNum)
+        {
+            var sum = 0;
+            if(splitNum.length > 1)
+            {
+                for(var i = 0; i < splitNum.length; i++)
+                {
+                    var value = parseInt(splitNum[i]);
+                    if(isNaN(value))
+                    {}
+                    else
+                    {
+                        sum += value;
+                    }
+                }
+                answerField.value = 'Ans: ' + sum;
+            }
+        }
+
+        function mul(splitNum)
+        {
+            var sum = 1;
+            if(splitNum.length > 1)
+            {
+                for(var i = 0; i < splitNum.length; i++)
+                {
+                    var value = parseInt(splitNum[i]);
+                    if(isNaN(value))
+                    {}
+                    else
+                    {
+                        sum *= value;
+                    }
+                }
+                answerField.value = 'Ans: ' + sum;
+            }
+        }
+
+        function sub(splitNum)
+        {
+            var sum = splitNum[0];
+            if(splitNum.length > 1)
+            {
+                for(var i = 1; i < splitNum.length; i++)
+                {
+                    var value = parseInt(splitNum[i]);
+                    if(isNaN(value))
+                    {}
+                    else
+                    {
+                        sum -= value;
+                    }
+                }
+                answerField.value = 'Ans: ' + sum;
+            }
+        }
+
+        function dev(splitNum)
+        {
+            var sum = splitNum[0];
+            if(splitNum.length > 1)
+            {
+                for(var i = 1; i < splitNum.length; i++)
+                {
+                    var value = parseInt(splitNum[i]);
+                    if(isNaN(value))
+                    {}
+                    else
+                    {
+                        sum /= value;
+                    }
+                }
+                answerField.value = 'Ans: ' + sum;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
